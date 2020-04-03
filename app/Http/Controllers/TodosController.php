@@ -45,11 +45,9 @@ class TodosController extends Controller{
 
     public function update($todoId){
         $data = request()->all();
-        $todo = Todo::class($todoId);
-        
-        $todo->name = $data['name'];
-        $todo->description = $data['description'];
-        $todo->save();
+        $todo = Todo::find($todoId);
+        $todo->update($data);
+        return redirect('/todos');
     }
 
 }
